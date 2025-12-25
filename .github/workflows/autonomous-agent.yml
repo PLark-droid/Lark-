@@ -103,6 +103,11 @@ jobs:
       - name: Install Miyabi CLI
         run: npm install -g miyabi
 
+      - name: Setup GitHub CLI auth
+        run: |
+          echo "${{ secrets.GITHUB_TOKEN }}" | gh auth login --with-token
+          gh auth status
+
       - name: Execute CoordinatorAgent
         id: execute
         run: |
